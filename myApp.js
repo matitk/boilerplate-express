@@ -3,7 +3,7 @@ let app = express();
 
 console.log('Hello World')
 
-app.use(__dirname + '/public', express.static())
+app.use('/public', express.static(__dirname + '/public'))
 
 app.get('/', (req, res) => {
   const index = __dirname + '/views/index.html'
