@@ -10,6 +10,9 @@ app.get('/', (req, res) => {
   res.sendFile(index)
 })
 
+app.get('/json', (req, res) => {
+  res.json({message: 'Hello json'})
+})
 
 
 
