@@ -2,13 +2,16 @@ let express = require('express')
 let app = express()
 let logger = require('./services/logger')
 require('dotenv').config()
+let bodyParser = require('body-parser')
 
 console.log('Hello World')
 
+// Middlewares
 app.use('/public', express.static(__dirname + '/public'))
-
 app.use(logger)
+app.use(bodyParser.urlencoded({extended: false}))
 
+// Routes
 app.get('/', (req, res) => {
   const index = __dirname + '/views/index.html'
   res.sendFile(index)
@@ -40,8 +43,6 @@ app.get('/name', (req, res) => {
   const fullName = `${req.query.first} ${req.query.last}`
   res.json({name: fullName})
 })
-
-
 
 
 
